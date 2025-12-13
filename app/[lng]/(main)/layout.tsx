@@ -1,13 +1,10 @@
 import dynamic from 'next/dynamic'
-import { Box, Grid2 as Grid, Toolbar, Container } from '@mui/material'
+import { Box, Grid, Toolbar, Container } from '@mui/material'
 
 // Types
 import type { Metadata } from 'next'
 import type { LayoutProps } from '@/types/app/layouts'
 import type { PageProps } from '@/types/app/pages'
-
-// Configurations
-import LocaleConfig from '@/config/locale'
 
 // Helpers
 import { useTranslation } from '@/helpers/i18n/server'
@@ -19,9 +16,7 @@ const AppbarOrganism = dynamic(() => import('@/components/organisms/appbar'))
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 	// Props
 	const { params } = props
-
-	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
+	const { lng } = await params
 
 	// Variables
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -32,12 +27,10 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 	return metadata
 }
 
-const MainLayout = (props: LayoutProps) => {
+const MainLayout = async (props: LayoutProps) => {
 	// Props
-	const { children, params } = props
-
-	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
+	const { params, children } = props
+	const { lng } = await params
 
 	return (
 		<Box display="flex">
@@ -57,6 +50,7 @@ const MainLayout = (props: LayoutProps) => {
 							py: { md: 2 }
 						}}
 					/>
+
 					{children}
 				</Container>
 			</Grid>

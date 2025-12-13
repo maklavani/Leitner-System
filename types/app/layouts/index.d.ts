@@ -1,9 +1,7 @@
 // Types
 import type { ReactNode } from 'react'
 
-export type LayoutProps = Readonly<{
+export type LayoutProps = ReadOnly<{
+	params: Promise<{ lng: string }>
 	children: ReactNode
-	params?: {
-		lng: string
-	}
 }>

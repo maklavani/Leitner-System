@@ -9,22 +9,21 @@ import type { PageProps } from '@/types/app/pages'
 // Configurations
 import Config from '@/config'
 import LocaleConfig from '@/config/locale'
-import ThemeConfig from '@/config/theme'
+import ThemeConfig from '@/config/theme-style'
 
 // Helpers
 import { useTranslation } from '@/helpers/i18n/server'
 
 // Components
-import ThemeRegistry from '@/components/theme/theme-registry'
-import AppCache from '@/components/theme/cache'
+import CookieProvider from '@/components/providers/cookie'
+import NextjsProvider from '@/components/providers/nextjs'
+import MUIProvider from '@/components/providers/mui'
 
 // Metadata
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 	// Props
 	const { params } = props
-
-	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
+	const { lng } = await params
 
 	// Variables
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -64,20 +63,22 @@ export const viewport: Viewport = {
 	themeColor: ThemeConfig.color
 }
 
-const RootLayout = (props: LayoutProps) => {
+const RootLayout = async (props: LayoutProps) => {
 	// Props
-	const { children, params } = props
+	const { params, children } = props
+	const { lng } = await params
 
 	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
-	const lngDir = dir(lng)
+	const lngDir = dir(lng ?? LocaleConfig.default)
 
 	return (
 		<html lang={lng} dir={lngDir} suppressHydrationWarning>
 			<body>
-				<AppCache dir={lngDir}>
-					<ThemeRegistry dir={lngDir}>{children}</ThemeRegistry>
-				</AppCache>
+				<CookieProvider>
+					<NextjsProvider dir={lngDir}>
+						<MUIProvider dir={lngDir}>{children}</MUIProvider>
+					</NextjsProvider>
+				</CookieProvider>
 
 				<Analytics mode="auto" />
 			</body>

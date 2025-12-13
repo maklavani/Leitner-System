@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { Grid2 as Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import { cyan, blueGrey, green } from '@mui/material/colors'
 import { Villa as VillaIcon, CloudDownload as CloudDownloadIcon, Tune as TuneIcon } from '@mui/icons-material'
 

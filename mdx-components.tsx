@@ -1,4 +1,4 @@
-import { Grid2 as Grid, Typography, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material'
+import { Grid, Typography, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material'
 
 // Types
 import type { MDXComponents } from 'mdx/types'

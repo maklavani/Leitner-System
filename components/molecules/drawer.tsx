@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { dir } from 'i18next'
-import { SwipeableDrawer, Toolbar, Grid2 as Grid } from '@mui/material'
+import { SwipeableDrawer, Toolbar, Grid } from '@mui/material'
 import { red, blueGrey } from '@mui/material/colors'
 import { Close as CloseIcon, ArrowForwardIos as ArrowForwardIosIcon, ArrowBackIosNew as ArrowBackIosNewIcon } from '@mui/icons-material'
 

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import { useTheme, alpha } from '@mui/material/styles'
-import { useMediaQuery, AppBar, Container, Toolbar, Grid2 as Grid } from '@mui/material'
+import { useMediaQuery, AppBar, Container, Toolbar, Grid } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
 import { Menu as MenuIcon } from '@mui/icons-material'
 
@@ -12,7 +12,7 @@ import type { Theme } from '@mui/material/styles'
 import type { AppbarProps } from '@/types/components/organisms/appbar'
 
 // Components
-const HideOnScroll = dynamic(() => import('@/components/theme/hide-on-scroll'))
+const HideOnScrollTemplate = dynamic(() => import('@/components/templates/hide-on-scroll'))
 const DrawerMolecule = dynamic(() => import('@/components/molecules/drawer'))
 const MenuMolecule = dynamic(() => import('@/components/molecules/menu'))
 const SettingsMolecule = dynamic(() => import('@/components/molecules/settings'))
@@ -30,7 +30,7 @@ const AppbarOrganism = (props: AppbarProps) => {
 	const greaterThanMedium = useMediaQuery(muiTheme.breakpoints.up('md'))
 
 	return (
-		<HideOnScroll onlyDesktop={true}>
+		<HideOnScrollTemplate onlyDesktop={true}>
 			<AppBar
 				component="nav"
 				sx={(theme: Theme) => ({
@@ -75,7 +75,7 @@ const AppbarOrganism = (props: AppbarProps) => {
 					</Toolbar>
 				</Container>
 			</AppBar>
-		</HideOnScroll>
+		</HideOnScrollTemplate>
 	)
 }
 

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { dir } from 'i18next'
 import { useTheme, useColorScheme } from '@mui/material/styles'
-import { useMediaQuery, Grid2 as Grid, Menu, MenuItem, Link } from '@mui/material'
+import { useMediaQuery, Grid, Menu, MenuItem, Link } from '@mui/material'
 import { amber, pink, blue, grey } from '@mui/material/colors'
 
 import {

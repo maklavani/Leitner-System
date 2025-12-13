@@ -1,11 +1,14 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { Container, Grid2 as Grid, Paper } from '@mui/material'
+import { useCookies } from 'react-cookie'
+import { Container, Grid, Paper } from '@mui/material'
 import { green } from '@mui/material/colors'
 import { Error as ErrorIcon, Link as LinkIcon } from '@mui/icons-material'
+
+// Configurations
+import LocaleConfig from '@/config/locale'
 
 // Components
 const PrimaryButtonAtom = dynamic(() => import('@/components/atoms/buttons/text/primary'))
@@ -14,8 +17,8 @@ const ParagraphTypographyAtom = dynamic(() => import('@/components/atoms/typogra
 
 const NotFoundPage = () => {
 	// Variables
-	const pathname = usePathname()
-	const lng = pathname.split('/').find(item => item)
+	const [cookies] = useCookies([LocaleConfig.cookieName])
+	const lng = cookies.i18next ?? LocaleConfig.default
 
 	return (
 		<Grid bgcolor="background.default">

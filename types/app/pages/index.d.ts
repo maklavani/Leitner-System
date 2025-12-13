@@ -1,6 +1,3 @@
-// Types
-import type { ReactNode } from 'react'
-
-export type PageProps = {
-	params?: { lng: string }
-}
+export type PageProps = ReadOnly<{
+	params: Promise<{ lng: string }>
+}>

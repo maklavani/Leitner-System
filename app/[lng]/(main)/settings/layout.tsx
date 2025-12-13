@@ -3,9 +3,6 @@ import type { Metadata } from 'next'
 import type { LayoutProps } from '@/types/app/layouts'
 import type { PageProps } from '@/types/app/pages'
 
-// Configurations
-import LocaleConfig from '@/config/locale'
-
 // Helpers
 import { useTranslation } from '@/helpers/i18n/server'
 
@@ -13,9 +10,7 @@ import { useTranslation } from '@/helpers/i18n/server'
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 	// Props
 	const { params } = props
-
-	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
+	const { lng } = await params
 
 	// Variables
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -26,14 +21,11 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 	return metadata
 }
 
-const MainLayout = (props: LayoutProps) => {
+const Layout = (props: LayoutProps) => {
 	// Props
-	const { children, params } = props
-
-	// Variables
-	const lng = params?.lng ?? LocaleConfig.default
+	const { children } = props
 
 	return <>{children}</>
 }
 
-export default MainLayout
+export default Layout
