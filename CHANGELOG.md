@@ -1,6 +1,7 @@
 # Release notes
 All notable changes to this project will be documented in this file.
 
+## 0.5.0
 - Upgraded the packages
 - Upgraded the structure
 
